@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Booking Page</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+        body {
+            background-image: url("{% static 'img/bookingbg.jpg' %}");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        .card {
+            margin: 0 auto;
+            /* Added */
+            float: none;
+            /* Added */
+            margin-bottom: 10px;
+            /* Added */
+        }
+        
+        .wrapper {
+            /* position: absolute;
+            top: 50%;
+            left: 50%; */
+            transform: translate(-50%, -50%);
+            width: fit-content;
+            height: auto;
+        }
+        
+        button {
+            width: 100px;
+            height: 35px;
+            background: linear-gradient(to left top, #000000 50%, #000000 50%);
+            border-style: none;
+            color: #fff;
+            font-size: 15px;
+            letter-spacing: 3px;
+            font-family: 'Lato';
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            padding: 0px;
+            overflow: hidden;
+            transition: all .5s;
+            box-shadow: 0px 1px 2px rgb(0, 0, 0);
+            border-radius: 15px;
+        }
+        
+        button span {
+            position: absolute;
+            display: block;
+        }
+        
+        button span:nth-child(1) {
+            height: 3px;
+            width: 200px;
+            top: 0px;
+            left: -200px;
+            /* background: linear-gradient(to right, rgb(255, 255, 255), #ffffff); */
+            border-top-right-radius: 1px;
+            border-bottom-right-radius: 1px;
+            animation: span1 2s linear infinite;
+            animation-delay: 1s;
+        }
+        
+        @keyframes span1 {
+            0% {
+                left: -200px
+            }
+            100% {
+                left: 200px;
+            }
+        }
+        
+        button span:nth-child(2) {
+            height: 70px;
+            width: 3px;
+            top: -70px;
+            right: 0px;
+            /* background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #ffe991); */
+            border-bottom-left-radius: 1px;
+            border-bottom-right-radius: 1px;
+            animation: span2 2s linear infinite;
+            animation-delay: 2s;
+        }
+        
+        @keyframes span2 {
+            0% {
+                top: -70px;
+            }
+            100% {
+                top: 70px;
+            }
+        }
+        
+        button span:nth-child(3) {
+            height: 3px;
+            width: 200px;
+            right: -200px;
+            bottom: 0px;
+            /* background: linear-gradient(to left, rgba(0, 0, 0, 0), #f6e58d); */
+            border-top-left-radius: 1px;
+            border-bottom-left-radius: 1px;
+            animation: span3 2s linear infinite;
+            animation-delay: 3s;
+        }
+        
+        @keyframes span3 {
+            0% {
+                right: -200px;
+            }
+            100% {
+                right: 200px;
+            }
+        }
+        
+        button span:nth-child(4) {
+            height: 70px;
+            width: 3px;
+            bottom: -70px;
+            left: 0px;
+            /* background: linear-gradient(to top, rgba(0, 0, 0, 0), #f6e58d); */
+            border-top-right-radius: 1px;
+            border-top-left-radius: 1px;
+            animation: span4 2s linear infinite;
+            animation-delay: 4s;
+        }
+        
+        @keyframes span4 {
+            0% {
+                bottom: -70px;
+            }
+            100% {
+                bottom: 70px;
+            }
+        }
+        
+        button:hover {
+            transition: all .5s;
+            transform: rotate(-3deg) scale(1.1);
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, .4);
+        }
+        
+        button:hover span {
+            animation-play-state: paused;
+        }
+    </style>
+
+
+    <section class="vh-100">
+        <div style="color:rgb(0, 0, 0);font-size: 45px;text-align: center;"> <b>Book Now...!</b> </div>
+        <br>
+        <div class="container h-80 align-items-center">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-lg-12 col-xl-11">
+                    <div class="card text-black" style="border-radius: 25px;background-color: rgba(0, 0, 0, 0.408);width:800px;height:700px;">
+
+                        <div class="card-body p-md-5">
+                            <div class=" row justify-content-center ">
+                                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1 ">
+
+                                    
+
+                                    <form class="mx-1 mx-md-4 " method="post">
+                                        {% csrf_token %}
+                                        <div class="d-flex flex-row align-items-center mb-4 " style="color: rgb(255, 255, 255);">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw "></i>
+                                            <div class="form-outline flex-fill mb-0 ">
+                                                <label class="form-label " for="email_address "><b>Your Name:</b></label>
+                                                <input type="pax_name " name="pax_name " id="pax_name " class="form-control " />
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4 " style="color: rgb(255, 255, 255);">
+                                            <i class="fas fa-lock fa-lg me-3 fa-fw "></i>
+                                            <div class="form-outline flex-fill mb-0 ">
+                                                <!-- <label  class="form-label " for="password "><b>Gender:</b></label> -->
+                                                <label class="form-label " for="email_address "><b>Gender: </b></label>
+                                                <input name="pax_gender " id="pax_gender " class="form-control " />
+                                            </div>
+                                            
+                                        </div>
+
+                                        
+
+                                        <div class="d-flex flex-row align-items-center mb-4 " style="color: rgb(255, 255, 255);">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw "></i>
+                                            <div class="form-outline flex-fill mb-0 ">
+                                                <label class="form-label " for="email_address "><b>Contact Number:</b></label>
+                                                <input type="contact_num " name="contact_num " id="contact_num " class="form-control " />
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="d-flex flex-row align-items-center mb-4 " style="color: rgb(255, 255, 255);">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw "></i>
+                                            <div class="form-outline flex-fill mb-0 ">
+                                                <label class="form-label " for="email_address "><b>Mail:</b></label>
+                                                <input type="email " name="mail " id="mail " class="form-control " />
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-items-center mb-4 " style="color: rgb(255, 255, 255);">
+                                            <i class="fas fa-envelope fa-lg me-3 fa-fw "></i>
+                                            <div class="form-outline flex-fill mb-0 ">
+                                                <label for="eventdate" style="color: rgb(255, 255, 255);"><b>Journey Date:</b></label>
+                                                <input type="datetime-local" class="form-control" id="eventdate"
+                                                    placeholder="eventdate" >
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                      
+
+                                        <div class="form-check" style="color: rgb(255, 255, 255);">
+                                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                                            <label class="form-check-label" for="gridCheck">
+                                                Pay while Boarding
+                                            </label>
+                                        </div>
+
+                                        <br>
+                                        
+                                        <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                            <button class="noselect" type="submit" onclick="location.href = 'confirmation'">Book</button>
+                                        </div>
+
+                                    </form>
+
+        
+
+                                </div>
+                                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2 ">
+
+                                    <img src="{% static 'img/booking.jpg' %}" class="img-fluid " alt="Sample image " style="border-radius:15px;height:400px;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4 " crossorigin="anonymous ">
+    </script>
+</body>
+
+</html>
