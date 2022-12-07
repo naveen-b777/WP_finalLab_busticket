@@ -9,5 +9,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('admin1/', views.admin1, name='admin1'),
     path('booking/', views.pax, name='pax'),
-    path('confirmation/', views.pax, name='pax'),
+    path('confirmation/', views.confim, name='confim'),
 ]

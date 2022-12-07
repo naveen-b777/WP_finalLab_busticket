@@ -26,7 +26,7 @@ class paxDetails(models.Model):
     contact_num = models.IntegerField()
     mail = models.EmailField()
     # date =models.DateField()
-    # total_pax = models.IntegerField()
+    # total_pax = models.IntegerField()+
 
     class Meta:
         db_table = 'pax_details' 

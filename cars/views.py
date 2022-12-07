@@ -31,6 +31,11 @@ def pax(request):
         pax.mail = request.POST.get("mail", False)
         # pax.date = request.POST.get("date",False)
         pax.save()
-
     
-    return render(request, 'booking.html')
+    
+    return render(request, 'booking.html',{'msg':'Booking Confirmed'})
+
+def confim(request):
+    if request.method == 'POST':
+        return render(request, 'confirmation.html')
+
